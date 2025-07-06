@@ -30,5 +30,6 @@ npm run dev
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Capture d’écran 2025-07-07 010446](https://github.com/user-attachments/assets/45bc6f7a-3f11-4993-95f3-cc208b3f74f2)
 
 
