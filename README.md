@@ -1,4 +1,4 @@
-## Technologies utilisées
+## Technologies used
 
 - [Next.js](https://nextjs.org/)
 - [Prisma](https://www.prisma.io/) (ORM)
@@ -30,10 +30,5 @@ npm run dev
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Techno
-
-NextJS pour le front
-Prisma comme ORM
 
 
