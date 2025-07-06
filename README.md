@@ -13,7 +13,7 @@ Install the project :
 npm install
 ```
 
-Init the Database :
+Initialize the Database :
 ```bash
 npx prisma migrate dev --name init
 ```
