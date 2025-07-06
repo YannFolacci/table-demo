@@ -2,7 +2,7 @@
 
 - [Next.js](https://nextjs.org/)
 - [Prisma](https://www.prisma.io/) (ORM)
-- [PostgreSQL/MySQL/etc.] (DB)
+- [SQLite] (DB)
 - [Tailwind CSS](https://tailwindcss.com/)
 
 
