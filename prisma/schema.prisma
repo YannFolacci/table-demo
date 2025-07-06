@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Objet {
+  id           Int         @id @default(autoincrement())
+  serialNumber  String @unique
+  reparationNumberId Int
+  reparationNumber     ReparationNumber    @relation(fields: [reparationNumberId], references: [id])
+  mesure Mesure?
+  certificat   Certificat?
+}
+
+model Commande {
+  id        Int       @id @default(autoincrement())
+  numero    String    @unique
+  clientId Int 
+  client    Client    @relation(fields: [clientId], references: [id])
+  reparations ReparationNumber[]
+}
+
+model Client {
+  id  Int @id @default(autoincrement())
+  name String @unique
+  refNumber Int @unique
+  commandes Commande[]
+}
+
+model ObjectType {
+  id Int @id @default(autoincrement())
+  name String @unique
+  reparationNumber    ReparationNumber[]
+}
+
+model Mesure {
+  id Int @id @default(autoincrement())
+  mesuredAt  DateTime   @default(now())
+  compliance Boolean    @default(false)
+  objetId Int @unique
+  objet Objet @relation(fields: [objetId], references: [id])
+}
+
+model Certificat {
+  id    Int    @id @default(autoincrement())
+  objetId Int @unique
+  objet      Objet     @relation(fields: [objetId], references: [id])
+}
+
+model   ReparationNumber{
+  id Int @id @default(autoincrement())
+  commandeId Int 
+  commande Commande @relation(fields: [commandeId], references: [id])
+  objectTypeId Int 
+  type ObjectType @relation(fields: [objectTypeId], references: [id])
+  objets Objet[]
+}
